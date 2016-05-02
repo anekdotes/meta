@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sitebase\Meta;
+namespace Anekdotes\Meta;
 use Anekdotes\Meta\Registry;
 
 /**
