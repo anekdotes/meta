@@ -1,4 +1,4 @@
-# Anekdotes Logger
+# Anekdotes Meta
 
 [![Latest Stable Version](https://poser.pugx.org/anekdotes/meta/v/stable)](https://packagist.org/packages/anekdotes/meta)
 [![Build Status](https://travis-ci.org/anekdotes/meta.svg)](https://travis-ci.org/anekdotes/meta)
