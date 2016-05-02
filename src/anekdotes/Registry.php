@@ -95,6 +95,7 @@ class Registry {
     *
     */
   public function group($key) {
+    //NOTE THIS CURRENTLY DOES NOT WORK! THis needs an helper function that calls Anekdotes\Support\Str
     return array_dot_get($this->all(), $key);
   }
 
@@ -128,7 +129,7 @@ class Registry {
    */
   public function __toString() {
     $return = '';
-    foreach ($items as $key => $value) {
+    foreach ($this->items as $key => $value) {
       $return .= $key.": ".$value."\r\n";
     }
     return $return;
