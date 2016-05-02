@@ -1,0 +1,35 @@
+{
+  "name": "anekdotes/meta",
+  "type": "library",
+  "description": "Contains utility classes meant to reference themselves and manipulate events/stora",
+  "keywords": [
+    "meta",
+    "registry",
+    "service",
+    "dispatcher"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Steve Gagné",
+      "email": "steve.gagne@anekdotes.com",
+      "homepage": "http://www.anekdotes.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0|~5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Anekdotes\\Meta\\": "src/anekdotes/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  }
+}
