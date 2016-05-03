@@ -34,23 +34,23 @@ class ObjectArrayActionDispatcher
      */
     public function __construct($objects = [])
     {
-      $this->objects = $objects;
+        $this->objects = $objects;
     }
 
     /**
      * Fires a specific object in the dispatcher.
      *
-     * @param  string  $name                     Name of the method to be called on all objects
-     * @param  array   $args                     Arguments to be passed in the function call
+     * @param string $name Name of the method to be called on all objects
+     * @param array  $args Arguments to be passed in the function call
      *
-     * @return ObjectArrayActionDispatcher       The instance of this object
+     * @return ObjectArrayActionDispatcher The instance of this object
      */
     public function __call($name, $args)
     {
-      foreach ($this->objects as $object) {
-          call_user_func_array([$object, $name], $args);
-      }
+        foreach ($this->objects as $object) {
+            call_user_func_array([$object, $name], $args);
+        }
 
-      return $this;
+        return $this;
     }
 }
