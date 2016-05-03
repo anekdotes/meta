@@ -21,7 +21,7 @@ Call the namespace of the object you want to use and use its functions. There ar
 
 ## Registry
 
-A data storage class. Meant to be extended and to load arrays in dot notation. 
+A data storage class. Meant to be extended and to load arrays in dot notation.
 
     use Anekdotes\Meta\Registry
     $registry = new Registry();
@@ -34,7 +34,7 @@ Additional functions to manipulate registries can be found in the source code
 
 ## StaticRegistry
 
-The StaticRegistry is a Singleton instance of the Registry. 
+The StaticRegistry is a Singleton instance of the Registry.
 
     use Anekdotes\Meta\StaticRegistry
     StaticRegistry::load(["toaster.test" => "Test"]);
@@ -49,7 +49,7 @@ A file loader that fills a registry based on the file content.
     $config->loadFile($path);
 
 It can also load folder of config files.
-    
+
     $config = new Config();
     $path = "app/config";
     $config->loadFolder($path);
@@ -73,7 +73,7 @@ Loading files can also be prefixed with the filename and have an additonal names
     $path = "app/config/config.php";
     $prefix = true;
     $namespace = "Meta";
-    $config->loadFile($path,$prefix,$namespace); 
+    $config->loadFile($path,$prefix,$namespace);
     $config->all(); //This will return ["Meta::config.dummy" => "dummy.php","Meta::config.test","test.php"];
 
 ## Dispatcher
@@ -104,6 +104,5 @@ The Object Array Action Dispatcher is a different kind of action dispatcher. It 
     $SecondFunctionToBeFired = function($RandomParam){
         echo "Test " . $RandomParam ;
     }
-    $dispatcher = new ObjectArrayActionDispatcher(["ActionOne" => ["call" => $FirstFunctionToGetFired], "ActionTwo" => ["call" => $SecondFunctionToGetFired]);
+    $dispatcher = new ObjectArrayActionDispatcher(["ActionOne" => ["call" => $FirstFunctionToGetFired], "ActionTwo" => ["call" => $SecondFunctionToGetFired]]);
     $dispatcher->call("Math"); //Will echo "Hello Math" and "Test Math"
-

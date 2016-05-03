@@ -16,7 +16,7 @@ namespace Anekdotes\Meta;
  *
  * This dispatcher contains multiple objects in an array. Each object must contain a function of the desired name, which will be called on all objects on call.
  *
- * To use this dispatcher, you simply need to create it with an Object Array, containing your actions in the array. Then, you just need to call it with the desired parameters.
+ * To use this dispatcher, you simply need to create it with an Object Array, containing your objects in the array. Then, you just need to call it with the desired parameters.
  */
 class ObjectArrayActionDispatcher
 {
@@ -30,7 +30,7 @@ class ObjectArrayActionDispatcher
     /**
      * Constructor function. Initializes the object listener array.
      *
-     * @param array $objects Objects that have a callback to execute on fire.
+     * @param array $objects Objects that have a function to execute on fire.
      */
     public function __construct($objects = [])
     {
