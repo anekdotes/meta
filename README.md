@@ -98,11 +98,11 @@ The Dispatcher allows an observer design pattern usage. It simply stores listene
 The Object Array Action Dispatcher is a different kind of action dispatcher. It treats an array of objects having different actions to be called.
 
     use Anekdotes\Meta\ObjectArrayActionDispatcher;
-    $FirstFunctionToGetFired = function($RandomParam){
-        echo "Hello " . $RandomParam ;
-    }
-    $SecondFunctionToBeFired = function($RandomParam){
-        echo "Test " . $RandomParam ;
-    }
-    $dispatcher = new ObjectArrayActionDispatcher(["ActionOne" => ["call" => $FirstFunctionToGetFired], "ActionTwo" => ["call" => $SecondFunctionToGetFired]]);
-    $dispatcher->call("Math"); //Will echo "Hello Math" and "Test Math"
+    $registry1 = new Registry();
+    $registry1->load(['Test' => 'Tests','Toast' => 'Toasts']);  
+    $registry2 = new Registry();
+    $registry2->load(['Test' => 'Nope','Toast' => 'Nope']);
+    $dispatcher = new ObjectArrayActionDispatcher([$registry1,$registry2]);
+    $dispatcher->set('Test','SuperTest'); //This calls the function SET on both registry objects, passing the parameters "Test" and "SuperTest."
+    $registry1->all(); //Now returns ['Test' => 'SuperTest', 'Toast' => 'Toasts']
+    $registry2->all(); //Now returns ['Test' => 'SuperTest', 'Toast' => 'Nope']
