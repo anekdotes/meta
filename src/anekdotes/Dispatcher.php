@@ -16,9 +16,9 @@ namespace Anekdotes\Meta;
  *
  * In other words, you create a dispatcher for a class, add a specific event(string), and then add subcribers(with listen()) (with functions to be called) on the event. Then, you call fire on the event, which dispatches all functions defined by the subscribers.
  */
-class Dispatcher {
-
-  /**
+class Dispatcher
+{
+    /**
    * Array containg all the events and their subscribers.
    *
    * Example structure :
@@ -31,47 +31,53 @@ class Dispatcher {
    *
    * @var array
    */
-  private $subscribers = array();
+  private $subscribers = [];
 
   /**
-   * Add a subscriber to an event
+   * Add a subscriber to an event.
+   *
    * @param  string    $event     The event to which the subscriber needs to be added to
    * @param  \Closure  $callback  The subscriber to add to the event
    */
-  public function listen($event, $callback) {
-    if (!isset($this->subscribers[$event])) {
-      $this->subscribers[$event] = array();
-    }
-    $this->subscribers[$event][] = $callback;
+  public function listen($event, $callback)
+  {
+      if (!isset($this->subscribers[$event])) {
+          $this->subscribers[$event] = [];
+      }
+      $this->subscribers[$event][] = $callback;
   }
 
   /**
-   * Fires all subscriber functions tied to en avent
+   * Fires all subscriber functions tied to en avent.
+   *
    * @return mixed Returns the return value of the callback, or FALSE on error.
    */
-  public function fire() {
-    $args = func_get_args();
-    $event = array_shift($args);
-    if (!isset($this->subscribers[$event])) {
-      return false;
-    }
-    $result = null;
-    foreach ($this->subscribers[$event] as $subscriber) {
-      $result = call_user_func_array($subscriber, $args);
-    }
-    return $result;
+  public function fire()
+  {
+      $args = func_get_args();
+      $event = array_shift($args);
+      if (!isset($this->subscribers[$event])) {
+          return false;
+      }
+      $result = null;
+      foreach ($this->subscribers[$event] as $subscriber) {
+          $result = call_user_func_array($subscriber, $args);
+      }
+
+      return $result;
   }
 
   /**
-   * Removes all subscribers from the specified event. If no event is specified, remove all subscribers from all events
+   * Removes all subscribers from the specified event. If no event is specified, remove all subscribers from all events.
+   *
    * @param  string $event Event to flush subscribers from
    */
-  public function flush($event = null) {
-    if ($event === null) {
-      $this->subscribers = array();
-    } else {
-      $this->subscribers[$event] = array();
-    }
+  public function flush($event = null)
+  {
+      if ($event === null) {
+          $this->subscribers = [];
+      } else {
+          $this->subscribers[$event] = [];
+      }
   }
-
 }

@@ -18,34 +18,39 @@ namespace Anekdotes\Meta;
  *
  * To use this dispatcher, you simply need to create it with an Object Array, containing your actions in the array. Then, you just need to call it with the desired parameters.
  */
-class ObjectArrayActionDispatcher {
-
-  /**
-   * Objects the calls will be dispatched to
+class ObjectArrayActionDispatcher
+{
+    /**
+   * Objects the calls will be dispatched to.
    *
    * @var array
    */
   private $objects;
 
   /**
-   * Constructor function. Initializes the object listener array
+   * Constructor function. Initializes the object listener array.
+   *
    * @param array $objects Objects that have a callback to execute on fire.
    */
-  public function __construct($objects = array()) {
-    $this->objects = $objects;
+  public function __construct($objects = [])
+  {
+      $this->objects = $objects;
   }
 
   /**
-   * Fires a specific object in the dispatcher
+   * Fires a specific object in the dispatcher.
+   *
    * @param  string  $name                     Name of the method to be called on all objects
    * @param  array   $args                     Arguments to be passed in the function call
+   *
    * @return ObjectArrayActionDispatcher       The instance of this object
    */
-  public function __call($name, $args) {
-    foreach ($this->objects as $object) {
-      call_user_func_array(array($object, $name), $args);
-    }
-    return $this;
-  }
+  public function __call($name, $args)
+  {
+      foreach ($this->objects as $object) {
+          call_user_func_array([$object, $name], $args);
+      }
 
+      return $this;
+  }
 }
