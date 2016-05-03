@@ -81,10 +81,10 @@ Loading files can also be prefixed with the filename and have an additonal names
 The Dispatcher allows an observer design pattern usage. It simply stores listener functions that gets fired when their action is called.
 
     use Anekdotes\Meta\Dispatcher;
-    $functionThatWillGetFired(){
+    $functionThatWillGetFired = function(){
         echo "Hello world!";
     }
-    $otherFunctionThatWillBeFired(){
+    $otherFunctionThatWillBeFired = function(){
         echo "I am fabulous.";
     }
     $dispatcher = new Dispatcher();
@@ -92,4 +92,18 @@ The Dispatcher allows an observer design pattern usage. It simply stores listene
     $dispatcher->listen('call',$otherFunctionThatWillBeFired);
     $dispatcher->fire('call'); //Will echo both "Hello world" and "I am fabulous"
     $dispatcher->flush('call'); //Removes all listeners associated to the event "call"
+
+## ObjectArrayActionDispatcher
+
+The Object Array Action Dispatcher is a different kind of action dispatcher. It treats an array of objects having different actions to be called.
+
+    use Anekdotes\Meta\ObjectArrayActionDispatcher;
+    $FirstFunctionToGetFired = function($RandomParam){
+        echo "Hello " . $RandomParam ;
+    }
+    $SecondFunctionToBeFired = function($RandomParam){
+        echo "Test " . $RandomParam ;
+    }
+    $dispatcher = new ObjectArrayActionDispatcher(["ActionOne" => ["call" => $FirstFunctionToGetFired], "ActionTwo" => ["call" => $SecondFunctionToGetFired]);
+    $dispatcher->call("Math"); //Will echo "Hello Math" and "Test Math"
 
