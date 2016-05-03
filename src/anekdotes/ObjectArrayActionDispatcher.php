@@ -21,36 +21,36 @@ namespace Anekdotes\Meta;
 class ObjectArrayActionDispatcher
 {
     /**
-   * Objects the calls will be dispatched to.
-   *
-   * @var array
-   */
-  private $objects;
+     * Objects the calls will be dispatched to.
+     *
+     * @var array
+     */
+    private $objects;
 
-  /**
-   * Constructor function. Initializes the object listener array.
-   *
-   * @param array $objects Objects that have a callback to execute on fire.
-   */
-  public function __construct($objects = [])
-  {
+    /**
+     * Constructor function. Initializes the object listener array.
+     *
+     * @param array $objects Objects that have a callback to execute on fire.
+     */
+    public function __construct($objects = [])
+    {
       $this->objects = $objects;
-  }
+    }
 
-  /**
-   * Fires a specific object in the dispatcher.
-   *
-   * @param  string  $name                     Name of the method to be called on all objects
-   * @param  array   $args                     Arguments to be passed in the function call
-   *
-   * @return ObjectArrayActionDispatcher       The instance of this object
-   */
-  public function __call($name, $args)
-  {
+    /**
+     * Fires a specific object in the dispatcher.
+     *
+     * @param  string  $name                     Name of the method to be called on all objects
+     * @param  array   $args                     Arguments to be passed in the function call
+     *
+     * @return ObjectArrayActionDispatcher       The instance of this object
+     */
+    public function __call($name, $args)
+    {
       foreach ($this->objects as $object) {
           call_user_func_array([$object, $name], $args);
       }
 
       return $this;
-  }
+    }
 }
