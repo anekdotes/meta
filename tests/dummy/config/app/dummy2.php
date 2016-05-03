@@ -1,8 +1,8 @@
 <?php
 
-return array(
+return [
   'toast' => 'app/toast',
-  'me' => array(
-    'you' => "test",  
-    ),
-);
+  'me'    => [
+    'you' => 'test',
+    ],
+];

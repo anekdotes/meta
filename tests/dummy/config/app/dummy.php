@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
   'dummy' => 'dummy.php',
-  'test' => 'test.php',
-);
+  'test'  => 'test.php',
+];

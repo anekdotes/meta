@@ -10,22 +10,24 @@
  */
 
 namespace Tests;
-use PHPUnit_Framework_TestCase; use Anekdotes\Meta\Registry;
+
+use Anekdotes\Meta\Registry;
+use PHPUnit_Framework_TestCase;
 
 class RegistryTest extends PHPUnit_Framework_TestCase
 {
     public function testLoadAndAll()
     {
         $registry = new Registry();
-        $registry->load(["toaster" => "Toast","Mathieu" => "Patate"]);
-        $registry->load(["Sam" => "Cod"]);
-        $this->assertEquals($registry->all(),["toaster" => "Toast","Mathieu" => "Patate","Sam" => "Cod"]);
+        $registry->load(['toaster' => 'Toast', 'Mathieu' => 'Patate']);
+        $registry->load(['Sam' => 'Cod']);
+        $this->assertEquals($registry->all(), ['toaster' => 'Toast', 'Mathieu' => 'Patate', 'Sam' => 'Cod']);
     }
 
     public function testHasItemsTrue()
     {
         $registry = new Registry();
-        $registry->load(["Test" => "Toast"]);
+        $registry->load(['Test' => 'Toast']);
         $this->assertTrue($registry->hasItems());
     }
 
@@ -38,61 +40,67 @@ class RegistryTest extends PHPUnit_Framework_TestCase
     public function testHasTrue()
     {
         $registry = new Registry();
-        $registry->load(["Test" => "Toast"]);
-        $this->assertTrue($registry->has("Test"));
+        $registry->load(['Test' => 'Toast']);
+        $this->assertTrue($registry->has('Test'));
     }
 
     public function testHasFalse()
     {
         $registry = new Registry();
-        $registry->load(["Test" => "Toast"]);
-        $this->assertFalse($registry->has("Toast"));
+        $registry->load(['Test' => 'Toast']);
+        $this->assertFalse($registry->has('Toast'));
     }
 
     public function testSetGet()
     {
         $registry = new Registry();
-        $registry->set("Toaster","Toast");
-        $this->assertEquals($registry->get("Toaster"),"Toast");
+        $registry->set('Toaster', 'Toast');
+        $this->assertEquals($registry->get('Toaster'), 'Toast');
     }
 
-    public function testGetDefault(){
+    public function testGetDefault()
+    {
         $registry = new Registry();
-        $this->assertEquals($registry->get("Toaster","Toast"),"Toast");
+        $this->assertEquals($registry->get('Toaster', 'Toast'), 'Toast');
     }
 
-    public function testRemove(){
+    public function testRemove()
+    {
         $registry = new Registry();
-        $registry->load(["toaster" => "Toast","Mathieu" => "Patate"]);
-        $registry->remove("toaster");
-        $this->assertFalse($registry->has("toaster"));
-        $this->assertTrue($registry->has("Mathieu"));
+        $registry->load(['toaster' => 'Toast', 'Mathieu' => 'Patate']);
+        $registry->remove('toaster');
+        $this->assertFalse($registry->has('toaster'));
+        $this->assertTrue($registry->has('Mathieu'));
     }
 
-    public function testFlush(){
+    public function testFlush()
+    {
         $registry = new Registry();
-        $registry->load(["toaster" => "Toast","Mathieu" => "Patate"]);
+        $registry->load(['toaster' => 'Toast', 'Mathieu' => 'Patate']);
         $registry->flush();
-        $this->assertFalse($registry->has("toaster"));
-        $this->assertFalse($registry->has("Mathieu"));
+        $this->assertFalse($registry->has('toaster'));
+        $this->assertFalse($registry->has('Mathieu'));
     }
 
-    public function testGroup(){
+    public function testGroup()
+    {
         $registry = new Registry();
-        $registry->load(["toaster.Sam.Life" => "CoD","toaster.Sam.PHP" => "ini","toaster.test" => "Toast","Mathieu" => "Patate"]);
-        $this->assertEquals($registry->group("toaster"),["Sam" => ["Life" => "CoD","PHP" => "ini"],"test" => "Toast"]);
+        $registry->load(['toaster.Sam.Life' => 'CoD', 'toaster.Sam.PHP' => 'ini', 'toaster.test' => 'Toast', 'Mathieu' => 'Patate']);
+        $this->assertEquals($registry->group('toaster'), ['Sam' => ['Life' => 'CoD', 'PHP' => 'ini'], 'test' => 'Toast']);
     }
 
-    public function testReplace(){
+    public function testReplace()
+    {
         $registry = new Registry();
-        $registry->load(["toaster" => "Toast","Mathieu" => "Patate"]);
-        $registry->replace(["Sam" => "Cod"]);
-        $this->assertEquals($registry->all(),["Sam" => "Cod"]);
+        $registry->load(['toaster' => 'Toast', 'Mathieu' => 'Patate']);
+        $registry->replace(['Sam' => 'Cod']);
+        $this->assertEquals($registry->all(), ['Sam' => 'Cod']);
     }
 
-    public function testToString(){
+    public function testToString()
+    {
         $registry = new Registry();
-        $registry->load(["toaster" => "Toast","Mathieu" => "Patate"]);
-        $this->assertEquals($registry->__toString(),"toaster: Toast\r\nMathieu: Patate\r\n");
+        $registry->load(['toaster' => 'Toast', 'Mathieu' => 'Patate']);
+        $this->assertEquals($registry->__toString(), "toaster: Toast\r\nMathieu: Patate\r\n");
     }
 }
