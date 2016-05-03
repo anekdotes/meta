@@ -1,7 +1,7 @@
 {
   "name": "anekdotes/meta",
   "type": "library",
-  "description": "Contains utility classes meant to reference themselves and manipulate events/stora",
+  "description": "Contains utility classes meant to reference themselves and manipulate events/storage",
   "keywords": [
     "meta",
     "registry",
