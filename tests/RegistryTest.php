@@ -79,8 +79,8 @@ class RegistryTest extends PHPUnit_Framework_TestCase
 
     public function testGroup(){
         $registry = new Registry();
-        $registry->load(["toaster.Sam" => "CoD","toaster.test" => "Toast","Mathieu" => "Patate"]);
-        $this->assertEquals($registry->group("toaster"),["Sam" => "CoD","test" => "Toast"]);
+        $registry->load(["toaster.Sam.Life" => "CoD","toaster.Sam.PHP" => "ini","toaster.test" => "Toast","Mathieu" => "Patate"]);
+        $this->assertEquals($registry->group("toaster"),["Sam" => ["Life" => "CoD","PHP" => "ini"],"test" => "Toast"]);
     }
 
     public function testReplace(){
