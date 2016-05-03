@@ -23,6 +23,7 @@ Call the namespace of the object you want to use and use its functions. There ar
 
 A data storage class. Meant to be extended and to load arrays in dot notation. 
 
+    use Anekdotes\Meta\Registry
     $registry = new Registry();
     $registry->load(["toaster.test" => "Test","toaster.toast" => "Toast","testing.test" => "Tested"]);
     $registry->get("testing.test"); //Returns "Tested"
@@ -35,12 +36,14 @@ Additional functions to manipulate registries can be found in the source code
 
 The StaticRegistry is a Singleton instance of the Registry. 
 
+    use Anekdotes\Meta\StaticRegistry
     StaticRegistry::load(["toaster.test" => "Test"]);
 
 ## Config
 
 A file loader that fills a registry based on the file content.
 
+    use Anekdotes\Meta\Config
     $config = new Config();
     $path = "app/config/config.php";
     $config->loadFile($path);
@@ -72,4 +75,21 @@ Loading files can also be prefixed with the filename and have an additonal names
     $namespace = "Meta";
     $config->loadFile($path,$prefix,$namespace); 
     $config->all(); //This will return ["Meta::config.dummy" => "dummy.php","Meta::config.test","test.php"];
+
+## Dispatcher
+
+The Dispatcher allows an observer design pattern usage. It simply stores listener functions that gets fired when their action is called.
+
+    use Anekdotes\Meta\Dispatcher;
+    $functionThatWillGetFired(){
+        echo "Hello world!";
+    }
+    $otherFunctionThatWillBeFired(){
+        echo "I am fabulous.";
+    }
+    $dispatcher = new Dispatcher();
+    $dispatcher->listen('call',$functionThatWillGetFired);
+    $dispatcher->listen('call',$otherFunctionThatWillBeFired);
+    $dispatcher->fire('call'); //Will echo both "Hello world" and "I am fabulous"
+    $dispatcher->flush('call'); //Removes all listeners associated to the event "call"
 
