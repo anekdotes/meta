@@ -35,6 +35,41 @@ Additional functions to manipulate registries can be found in the source code
 
 The StaticRegistry is a Singleton instance of the Registry. 
 
-    StaticRegistry::load(["toaster.test" => "Test]);
+    StaticRegistry::load(["toaster.test" => "Test"]);
 
+## Config
+
+A file loader that fills a registry based on the file content.
+
+    $config = new Config();
+    $path = "app/config/config.php";
+    $config->loadFile($path);
+
+It can also load folder of config files.
+    
+    $config = new Config();
+    $path = "app/config";
+    $config->loadFolder($path);
+
+Files must use the following format :
+
+    <?php
+
+    return array(
+        'dummy' => 'dummy.php',
+        'test' => 'test.php',
+    );
+
+Since Config extends Registry, you can obtain the content as with a registry.
+
+    $config->get("dummy"); //Returns "dummy.php"
+
+Loading files can also be prefixed with the filename and have an additonal namespace as prefix
+
+    $config = new Config();
+    $path = "app/config/config.php";
+    $prefix = true;
+    $namespace = "Meta";
+    $config->loadFile($path,$prefix,$namespace); 
+    $config->all(); //This will return ["Meta::config.dummy" => "dummy.php","Meta::config.test","test.php"];
 
