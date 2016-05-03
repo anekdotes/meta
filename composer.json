@@ -28,7 +28,7 @@
       "Anekdotes\\Meta\\": "src/anekdotes/"
     },
     "files": [
-      "src/Anekdotes/helpers.php"
+      "src/anekdotes/helpers.php"
     ]
   },
   "autoload-dev": {
