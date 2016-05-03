@@ -28,8 +28,13 @@ class Config extends Registry {
     $configFileContents = require $path;
     $prefixName = '';
     if ($prefix) {
-      $prefixName = last(explode(DS, $path));
-      $prefixName = trim(head(explode('.', $prefixName)), '/\\').'.';
+      if(!defined('DS')){
+        define('DS', DIRECTORY_SEPARATOR);
+      }
+      $explodedPath = explode(DS, $path);
+      $prefixName = end($explodedPath);
+      $explodedDots = explode('.', $prefixName);
+      $prefixName = trim(reset($explodedDots), '/\\').'.';
     }
     if ( ! is_null($namespace)) {
       $prefixName = $namespace.'::'.$prefixName;
