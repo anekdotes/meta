@@ -86,16 +86,17 @@ class Registry {
   }
 
   /**
-    * Returns a group of values using array_dot_get
+    * Returns a value or more in the items, using the dot notation to decide where to fetch from.
     *
-    * "toaster.toast.grasseh.whatever" would return all 4 values at these specific items, in an array.
+    * Ex:
+    * $this->items = ["toaster.Sam" => "CoD","toaster.test" => "Toast","Mathieu" => "Patate"];
+    * $this->group('toaster'); will then give ["Sam" => "CoD","test" => "Toast]
     *
     * @param  string  $key  A string representing all the keys needed, seperated by a dot
     * @return array         An array of all the values asked by the key string
     *
     */
   public function group($key) {
-    //NOTE THIS CURRENTLY DOES NOT WORK! THis needs an helper function that calls Anekdotes\Support\Str
     return array_dot_get($this->all(), $key);
   }
 

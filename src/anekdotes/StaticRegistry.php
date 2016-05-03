@@ -90,7 +90,6 @@ abstract class StaticRegistry {
     *
     */
   public static function group($key) {
-    //NOTE Since Registry->group does not currently work, this function currently doesn't work.
     return self::$registry->group($key);
   }
 

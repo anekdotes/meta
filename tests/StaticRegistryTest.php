@@ -11,7 +11,9 @@
 
 namespace Tests;
 use PHPUnit_Framework_TestCase; use Anekdotes\Meta\StaticRegistry;
-
+/**
+ * @runTestsInSeparateProcesses
+ */
 class StaticRegistryTest extends PHPUnit_Framework_TestCase
 {
     public function testLoadAndAll()
@@ -43,7 +45,7 @@ class StaticRegistryTest extends PHPUnit_Framework_TestCase
     }
 
     public function testGroup(){
-        StaticRegistry::load(["toaster" => "Toast","Mathieu" => "Patate","Sam" => "Cod"]);
-        //$this->assertEquals(StaticRegistry::group("toaster.Sam"),["toaster" => "Toast","Sam" => "Cod"]);
+        StaticRegistry::load(["toaster.Sam" => "CoD","toaster.test" => "Toast","Mathieu" => "Patate"]);
+        $this->assertEquals(StaticRegistry::group("toaster"),["Sam" => "CoD","test" => "Toast"]);
     }
 }

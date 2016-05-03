@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://poser.pugx.org/anekdotes/meta/v/stable)](https://packagist.org/packages/anekdotes/meta)
 [![Build Status](https://travis-ci.org/anekdotes/meta.svg)](https://travis-ci.org/anekdotes/meta)
-[![codecov.io](https://codecov.io/github/anekdotes/meta/coverage.svg)](https://codecov.io/github/anekdotes/meta?branch=master)
+[![codecov.io](https://codecov.io/gh/anekdotes/meta/branch/master/graph/badge.svg)](https://codecov.io/github/anekdotes/meta?branch=master)
 [![StyleCI](https://styleci.io/repos/57909394/shield?style=flat)](https://styleci.io/repos/57909394)
 [![License](https://poser.pugx.org/anekdotes/meta/license)](https://packagist.org/packages/anekdotes/meta)
 [![Total Downloads](https://poser.pugx.org/anekdotes/meta/downloads)](https://packagist.org/packages/anekdotes/meta)
