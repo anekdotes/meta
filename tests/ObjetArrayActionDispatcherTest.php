@@ -15,17 +15,7 @@ use Anekdotes\Meta\ObjectArrayActionDispatcher;
 use Anekdotes\Meta\Registry;
 use PHPUnit_Framework_TestCase;
 
-function test1(&$test)
-{
-    $test .= 's';
-}
-class tester
-{
-    public function test2(&$test)
-    {
-        $test .= 't';
-    }
-}
+
 
 class ObjectArrayActionDispatcherTest extends PHPUnit_Framework_TestCase
 {
