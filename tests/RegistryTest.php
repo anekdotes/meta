@@ -50,7 +50,6 @@ class RegistryTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($registry->get('Toaster'), 'Test');
     }
 
-
     public function testRemove()
     {
         $registry = new Registry();
