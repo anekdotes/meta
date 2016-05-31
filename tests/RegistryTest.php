@@ -24,17 +24,12 @@ class RegistryTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($registry->all(), ['toaster' => 'Toast', 'Mathieu' => 'Patate', 'Sam' => 'Cod']);
     }
 
-    public function testHasItemsTrue()
-    {
-        $registry = new Registry();
-        $registry->load(['Test' => 'Toast']);
-        $this->assertTrue($registry->hasItems());
-    }
-
-    public function testHasItemsFalse()
+    public function testHasItems()
     {
         $registry = new Registry();
         $this->assertFalse($registry->hasItems());
+        $registry->load(['Test' => 'Toast']);
+        $this->assertTrue($registry->hasItems());
     }
 
     public function testHasTrue()
