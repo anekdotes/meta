@@ -76,8 +76,8 @@ class Dispatcher
   {
       if ($event === null) {
           $this->subscribers = [];
-      } else {
-          $this->subscribers[$event] = [];
+          return;
       }
+      $this->subscribers[$event] = [];
   }
 }
