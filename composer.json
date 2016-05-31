@@ -26,10 +26,7 @@
   "autoload": {
     "psr-4": {
       "Anekdotes\\Meta\\": "src/anekdotes/"
-    },
-    "files": [
-      "src/anekdotes/helpers.php"
-    ]
+    }
   },
   "autoload-dev": {
     "psr-4": {
