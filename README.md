@@ -6,6 +6,7 @@
 [![StyleCI](https://styleci.io/repos/57909394/shield?style=flat)](https://styleci.io/repos/57909394)
 [![License](https://poser.pugx.org/anekdotes/meta/license)](https://packagist.org/packages/anekdotes/meta)
 [![Total Downloads](https://poser.pugx.org/anekdotes/meta/downloads)](https://packagist.org/packages/anekdotes/meta)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/18e8376a738c4f2c8043bfb9bda57d90)](https://www.codacy.com/app/steve-gagnev4si/meta?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=anekdotes/meta&amp;utm_campaign=Badge_Grade)
 
 Contains utility classes meant to reference themselves and manipulate events/storage
 
