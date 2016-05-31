@@ -32,32 +32,24 @@ class RegistryTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($registry->hasItems());
     }
 
-    public function testHasTrue()
+    public function testHas()
     {
         $registry = new Registry();
         $registry->load(['Test' => 'Toast']);
         $this->assertTrue($registry->has('Test'));
-    }
-
-    public function testHasFalse()
-    {
-        $registry = new Registry();
-        $registry->load(['Test' => 'Toast']);
         $this->assertFalse($registry->has('Toast'));
     }
 
     public function testSetGet()
     {
         $registry = new Registry();
-        $registry->set('Toaster', 'Toast');
-        $this->assertEquals($registry->get('Toaster'), 'Toast');
+        //Default
+        $this->assertEquals($registry->get('Toaster', 'Toast'), 'Toast');
+        //With data
+        $registry->set('Toaster', 'Test');
+        $this->assertEquals($registry->get('Toaster'), 'Test');
     }
 
-    public function testGetDefault()
-    {
-        $registry = new Registry();
-        $this->assertEquals($registry->get('Toaster', 'Toast'), 'Toast');
-    }
 
     public function testRemove()
     {
