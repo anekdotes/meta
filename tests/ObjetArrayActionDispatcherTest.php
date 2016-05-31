@@ -15,9 +15,7 @@ use Anekdotes\Meta\ObjectArrayActionDispatcher;
 use Anekdotes\Meta\Registry;
 use PHPUnit_Framework_TestCase;
 
-
-
-class ObjectArrayActionDispatcherTest extends PHPUnit_Framework_TestCase
+class ObjetArrayActionDispatcherTest extends PHPUnit_Framework_TestCase
 {
     public function testObjectArrayDispatching()
     {
