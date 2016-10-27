@@ -50,7 +50,7 @@ class Dispatcher
   /**
    * Fires all subscriber functions tied to en avent.
    *
-   * @return mixed Returns the return value of the callback, or FALSE on error.
+   * @return mixed Returns the return value of the callback, or FALSE on error
    */
   public function fire()
   {

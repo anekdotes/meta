@@ -30,7 +30,7 @@ class ObjectArrayActionDispatcher
     /**
      * Constructor function. Initializes the object listener array.
      *
-     * @param array $objects Objects that have a function to execute on fire.
+     * @param array $objects Objects that have a function to execute on fire
      */
     public function __construct($objects = [])
     {
