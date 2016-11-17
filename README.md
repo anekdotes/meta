@@ -112,7 +112,13 @@ $dispatcher->flush('call'); //Removes all listeners associated to the event "cal
 
 ## ObjectArrayActionDispatcher
 
-The Object Array Action Dispatcher is a different kind of action dispatcher. It treats an array of objects having different actions to be called.
+The Object Array Action Dispatcher (OAAD) is a different kind of action dispatcher. It treats an array of objects having different actions to be called.
+
+To use, simply : 
+1 - create the OAAD with the objects that have a function with the same signature to be called
+2 - Call the function on the dispatcher
+
+The following examples demonstrates calling set on multiples registries using an OOAD.
 
 ```php
 use Anekdotes\Meta\ObjectArrayActionDispatcher;
