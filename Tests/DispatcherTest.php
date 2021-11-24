@@ -12,9 +12,9 @@
 namespace Tests;
 
 use Anekdotes\Meta\Dispatcher;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class DispatcherTest extends PHPUnit_Framework_TestCase
+final class DispatcherTest extends TestCase
 {
     public function testDispatcherProcedure()
     {
@@ -30,16 +30,21 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
         $dispatcher->listen('fire', $closure);
         $dispatcher->listen('fire', $closure2);
         $dispatcher->fire('fire');
+
         $this->assertEquals($test, 'tests');
         $this->assertEquals($test2, 'testv');
+
         $dispatcher->listen('toast', $closure);
         $dispatcher->flush('fire');
         $dispatcher->fire('fire');
         $dispatcher->fire('toast');
+
         $this->assertEquals($test, 'testss');
         $this->assertEquals($test2, 'testv');
+
         $dispatcher->flush();
         $dispatcher->fire('toast');
+
         $this->assertEquals($test, 'testss');
         $this->assertEquals($test2, 'testv');
     }
@@ -47,6 +52,7 @@ class DispatcherTest extends PHPUnit_Framework_TestCase
     public function testEmptyFire()
     {
         $dispatcher = new Dispatcher();
+        
         $this->assertFalse($dispatcher->fire('test'));
     }
 }

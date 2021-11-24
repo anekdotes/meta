@@ -12,23 +12,27 @@
 namespace Tests;
 
 use Anekdotes\Meta\Registry;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class RegistryTest extends PHPUnit_Framework_TestCase
+final class RegistryTest extends TestCase
 {
     public function testLoadAndAll()
     {
         $registry = new Registry();
         $registry->load(['toaster' => 'Toast', 'Mathieu' => 'Patate']);
         $registry->load(['Sam' => 'Cod']);
+
         $this->assertEquals($registry->all(), ['toaster' => 'Toast', 'Mathieu' => 'Patate', 'Sam' => 'Cod']);
     }
 
     public function testHasItems()
     {
         $registry = new Registry();
+
         $this->assertFalse($registry->hasItems());
+
         $registry->load(['Test' => 'Toast']);
+
         $this->assertTrue($registry->hasItems());
     }
 
@@ -36,6 +40,7 @@ class RegistryTest extends PHPUnit_Framework_TestCase
     {
         $registry = new Registry();
         $registry->load(['Test' => 'Toast']);
+
         $this->assertTrue($registry->has('Test'));
         $this->assertFalse($registry->has('Toast'));
     }
@@ -43,10 +48,13 @@ class RegistryTest extends PHPUnit_Framework_TestCase
     public function testSetGet()
     {
         $registry = new Registry();
+
         //Default
         $this->assertEquals($registry->get('Toaster', 'Toast'), 'Toast');
+
         //With data
         $registry->set('Toaster', 'Test');
+
         $this->assertEquals($registry->get('Toaster'), 'Test');
     }
 
@@ -55,6 +63,7 @@ class RegistryTest extends PHPUnit_Framework_TestCase
         $registry = new Registry();
         $registry->load(['toaster' => 'Toast', 'Mathieu' => 'Patate']);
         $registry->remove('toaster');
+
         $this->assertFalse($registry->has('toaster'));
         $this->assertTrue($registry->has('Mathieu'));
     }
@@ -64,6 +73,7 @@ class RegistryTest extends PHPUnit_Framework_TestCase
         $registry = new Registry();
         $registry->load(['toaster' => 'Toast', 'Mathieu' => 'Patate']);
         $registry->flush();
+
         $this->assertFalse($registry->has('toaster'));
         $this->assertFalse($registry->has('Mathieu'));
     }
@@ -72,6 +82,7 @@ class RegistryTest extends PHPUnit_Framework_TestCase
     {
         $registry = new Registry();
         $registry->load(['toaster.Sam.Life' => 'CoD', 'toaster.Sam.PHP' => 'ini', 'toaster.test' => 'Toast', 'Mathieu' => 'Patate']);
+
         $this->assertEquals($registry->group('toaster'), ['Sam' => ['Life' => 'CoD', 'PHP' => 'ini'], 'test' => 'Toast']);
     }
 
@@ -80,6 +91,7 @@ class RegistryTest extends PHPUnit_Framework_TestCase
         $registry = new Registry();
         $registry->load(['toaster' => 'Toast', 'Mathieu' => 'Patate']);
         $registry->replace(['Sam' => 'Cod']);
+
         $this->assertEquals($registry->all(), ['Sam' => 'Cod']);
     }
 
@@ -87,6 +99,7 @@ class RegistryTest extends PHPUnit_Framework_TestCase
     {
         $registry = new Registry();
         $registry->load(['toaster' => 'Toast', 'Mathieu' => 'Patate']);
+        
         $this->assertEquals($registry->__toString(), "toaster: Toast\r\nMathieu: Patate\r\n");
     }
 }

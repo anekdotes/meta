@@ -13,9 +13,9 @@ namespace Tests;
 
 use Anekdotes\Meta\ObjectArrayActionDispatcher;
 use Anekdotes\Meta\Registry;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class ObjetArrayActionDispatcherTest extends PHPUnit_Framework_TestCase
+final class ObjetArrayActionDispatcherTest extends TestCase
 {
     public function testObjectArrayDispatching()
     {
@@ -25,6 +25,7 @@ class ObjetArrayActionDispatcherTest extends PHPUnit_Framework_TestCase
         $registry2->load(['Test' => 'Nope', 'Toast' => 'Nope']);
         $dispatcher = new ObjectArrayActionDispatcher([$registry1, $registry2]);
         $dispatcher->set('Test', 'SuperTest');
+
         $this->assertEquals($registry1->get('Test'), 'SuperTest');
         $this->assertEquals($registry2->get('Test'), 'SuperTest');
     }
@@ -32,8 +33,11 @@ class ObjetArrayActionDispatcherTest extends PHPUnit_Framework_TestCase
     public function testCallUserFuncArrayAndArrayDotGet()
     {
         $value = call_user_func_array('array_dot_get', [['toast' => 'toast'], null]);
+
         $this->assertEquals($value, ['toast' => 'toast']);
+
         $value = call_user_func_array('array_dot_get', [['toast' => 'toast'], 'toast']);
+        
         $this->assertEquals($value, 'toast');
     }
 }
